@@ -674,12 +674,18 @@ for tab, sid in zip(station_tabs, station_ids):
 
             legend_html = '<div style="display:flex; gap:1rem; margin-bottom:0.5rem">'
             for op in sorted(set(s.operator for s in slots)):
-                legend_html += f'<span style="display:flex;align-items:center;gap:4px;font-family:\'IBM Plex Mono\',monospace;font-size:0.65rem;color:{op_text.get(op,\"#eee\")}">' \
-                               f'<span style="width:10px;height:10px;background:{op_colors.get(op,\"#555\")};border-radius:2px;display:inline-block"></span>' \
-                               f'{op.upper()}</span>'
-            legend_html += '<span style="display:flex;align-items:center;gap:4px;font-family:\'IBM Plex Mono\',monospace;font-size:0.65rem;color:#fc8181">' \
-                           '<span style="width:10px;height:10px;background:rgba(252,129,129,0.15);border:1px solid rgba(252,129,129,0.3);border-radius:2px;display:inline-block"></span>' \
-                           'WAIT</span>'
+                op_color = op_text.get(op, "#eee")
+                op_bg = op_colors.get(op, "#555")
+                legend_html += (
+                    f'<span style="display:flex;align-items:center;gap:4px;font-family:IBM Plex Mono,monospace;font-size:0.65rem;color:{op_color}">'
+                    f'<span style="width:10px;height:10px;background:{op_bg};border-radius:2px;display:inline-block"></span>'
+                    f'{op.upper()}</span>'
+                )
+            legend_html += (
+                '<span style="display:flex;align-items:center;gap:4px;font-family:IBM Plex Mono,monospace;font-size:0.65rem;color:#fc8181">'
+                '<span style="width:10px;height:10px;background:rgba(252,129,129,0.15);border:1px solid rgba(252,129,129,0.3);border-radius:2px;display:inline-block"></span>'
+                'WAIT</span>'
+            )
             legend_html += '</div>'
 
             st.markdown(legend_html, unsafe_allow_html=True)
