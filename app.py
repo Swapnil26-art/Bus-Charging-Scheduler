@@ -505,7 +505,7 @@ def render_bus_table(buses: list[BusResult], scenario):
             return ""
 
     st.dataframe(
-        df.style.applymap(style_wait, subset=["Total Wait"]),
+        df.style.map(style_wait, subset=["Total Wait"]),
         use_container_width=True,
         hide_index=True,
     )
